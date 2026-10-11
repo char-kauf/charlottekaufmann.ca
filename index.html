@@ -710,7 +710,77 @@
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
     .row,.glance,.funnel-card,.pcard,.tool,.toplist,.triad .tcard,
     .creative figure,.status,.chip,.bar-in,footer .foot{background:rgba(255,255,255,.82)}
+    .vid{background:rgba(255,255,255,.82)}
   }
+
+  /* ---- Content section: video tutorials ---- */
+  .content-note{margin:18px 0 0;max-width:62ch;font-size:18px;line-height:1.5;color:#36354D}
+  .ct-wrap{padding-top:8px;padding-bottom:28px}
+  .vidgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .vid{display:flex;flex-direction:column;gap:12px;padding:12px 12px 16px;border-radius:var(--radius);
+    background:var(--glass);border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    color:var(--ink);text-decoration:none;transition:transform .28s cubic-bezier(.22,.61,.36,1),background .28s}
+  .vid:hover{transform:translateY(-3px);background:var(--glass-strong)}
+  .vid:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+  .vid-thumb{position:relative;display:block;border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:#8E8FE8}
+  .vid-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .vid-play{position:absolute;left:12px;bottom:10px;width:38px;height:38px;border-radius:50%;
+    background:rgba(255,255,255,.92);box-shadow:0 6px 20px rgba(27,26,46,.25);transition:transform .28s}
+  .vid-play::after{content:"";position:absolute;left:15px;top:11px;border-style:solid;
+    border-width:8px 0 8px 12px;border-color:transparent transparent transparent var(--pine)}
+  .vid:hover .vid-play{transform:scale(1.08)}
+  .vid-time{position:absolute;right:10px;bottom:10px;padding:2px 7px;border-radius:7px;
+    background:rgba(27,26,46,.78);color:#fff;font-size:12.5px;font-weight:600}
+  .vid-title{padding:0 6px;font-family:var(--serif);font-weight:600;font-size:17px;line-height:1.3;letter-spacing:-.01em}
+  @media(max-width:680px){.vidgrid{grid-template-columns:1fr}.vid{background:rgba(255,255,255,.82)}}
+  .ct-head{margin:26px 0 18px}
+  .ct-head .kick{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pine)}
+  .ct-head h3{font-family:var(--serif);font-weight:700;letter-spacing:-.025em;font-size:clamp(22px,3vw,30px);margin:6px 0 0;color:var(--ink)}
+  .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .step{padding:22px 24px 24px;border-radius:var(--radius);background:var(--glass);border:1px solid var(--glass-edge);
+    box-shadow:var(--glass-shadow);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
+  .step-wide{grid-column:1 / -1}
+  .step-num{font-family:var(--serif);font-size:18px;color:var(--pine-soft)}
+  .step h4{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:-.02em;margin:8px 0 8px;color:var(--ink)}
+  .step p{margin:0;font-size:17px;line-height:1.5;color:#36354D}
+  @media(max-width:680px){.steps{grid-template-columns:1fr}.step{background:rgba(255,255,255,.82)}}
+  .ct-head .content-note{margin-top:10px}
+  .clipgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .clip{margin:0;padding:10px 10px 14px;border-radius:var(--radius);background:var(--glass);border:1px solid var(--glass-edge);
+    box-shadow:var(--glass-shadow);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
+  .clip video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;background:#1B1A2E}
+  .clip figcaption{padding:12px 6px 0;font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--ink)}
+  @media(max-width:680px){.clipgrid{grid-template-columns:1fr;max-width:340px;margin:0 auto}.clip{background:rgba(255,255,255,.82)}}
+  .tool.brand{width:168px;padding:0 20px;text-decoration:none}
+  a.tool.brand:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+  .brandgrid .marquee-track{animation-duration:95s}
+  .tool.brand img{max-height:36px;max-width:128px;width:auto;height:auto}
+  .tool.brand img[src$=".svg"]{width:128px}
+  #brands{padding-top:6px}
+  /* hero photo nudged slightly right on wide screens */
+  @media(min-width:861px){.hero-photo{left:18px}}
+  /* less empty space between About and the footer CTA */
+  #about{padding-bottom:36px}
+  #home footer{margin-top:0;padding-top:58px}
+  /* footer CTA: even spacing above the heading and below the buttons */
+  footer .foot{gap:0;padding:46px 52px 22px}
+  footer .foot:not(:has(.small)){padding-bottom:46px}
+  .foot h4{margin-bottom:24px}
+  .foot .small{margin-top:46px;padding-top:14px}
+  /* about text on a glass card, like the rest of the site */
+  #about .about-grid > div{padding:26px 30px 28px;border-radius:var(--radius);background:var(--glass);border:1px solid var(--glass-edge);
+    box-shadow:var(--glass-shadow);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
+  #about .about-grid p{color:#36354D;font-size:clamp(18px,2.1vw,21px);line-height:1.55}
+  @media(min-width:861px){
+    #about{grid-template-areas:"art head" "art text" "art .";grid-template-rows:auto auto 1fr}
+    #about .sec-head{margin-bottom:14px;align-self:start}
+  }
+  #about .about-grid p:last-child{margin-bottom:0}
+  @media(max-width:680px){#about .about-grid > div{padding:20px 20px 22px;background:rgba(255,255,255,.82)}}
+  .glance.cols-2{grid-template-columns:repeat(2,1fr);max-width:520px}
+  .step .kick{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pine)}
+  .cs-body .block h4{font-family:var(--serif);font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--ink);margin:26px 0 8px}
 </style>
 </head>
 <body>
@@ -736,20 +806,42 @@
     <div class="hero-grid">
       <div class="hero-text">
         <h1 class="reveal">Marketing that drives action.</h1>
-        <p class="lead reveal">Hi! I'm Charlotte, an AI-first product marketer at a seed-stage startup. Read on to learn more about my work.</p>
+        <p class="lead reveal">I'm Charlotte. Read on to learn more about my five years of marketing across B2B/B2C SaaS and agency work.</p>
       </div>
       <div class="hero-photo reveal">
         <img src="headshot.jpg" alt="Charlotte Kaufmann">
-        <div class="float-chip fc-1"><b>6×</b><span>launch-week<br>revenue</span></div>
+        <div class="float-chip fc-1"><b>544%</b><span>launch-week<br>revenue growth</span></div>
         <div class="float-chip fc-2"><b>$32K</b><span>ARR<br>recovered</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section class="sec wrap" id="brands">
+    <div class="sec-head" style="justify-content:center">
+      <h2>Brands I've worked with</h2>
+    </div>
+    <div class="toolgrid brandgrid reveal">
+      <a class="tool brand" title="Shindig Music Festival" href="https://shindigfest.ca/" target="_blank" rel="noopener"><img src="brands/shindig.png?v=2" alt="Shindig Music Festival"></a>
+      <a class="tool brand" title="The Ten Spot" href="https://www.thetenspot.com/" target="_blank" rel="noopener"><img src="brands/the-ten-spot.png?v=2" alt="The Ten Spot"></a>
+      <a class="tool brand" title="Goldfish" href="https://www.campbellsoup.ca/our-brands/snacks/goldfish/" target="_blank" rel="noopener"><img src="brands/goldfish.png?v=2" alt="Goldfish"></a>
+      <a class="tool brand" title="Smooth Ambler" href="https://www.smoothambler.com/" target="_blank" rel="noopener"><img src="brands/smooth-ambler.png?v=2" alt="Smooth Ambler"></a>
+      <a class="tool brand" title="Scribenote" href="https://www.scribenote.com/" target="_blank" rel="noopener"><img src="brands/scribenote.png?v=2" alt="Scribenote"></a>
+      <a class="tool brand" title="Henkell" href="https://www.henkell.com/" target="_blank" rel="noopener"><img src="brands/henkell.png?v=2" alt="Henkell"></a>
+      <a class="tool brand" title="Snack Factory Pretzel Crisps" href="https://www.campbellsoup.ca/our-brands/snacks/snack-factory/" target="_blank" rel="noopener"><img src="brands/pretzel-crisps.png?v=3" alt="Snack Factory Pretzel Crisps"></a>
+      <a class="tool brand" title="Ralph Lauren" href="https://www.ralphlauren.com/" target="_blank" rel="noopener"><img src="brands/ralph-lauren.svg" alt="Ralph Lauren"></a>
+      <a class="tool brand" title="Campbell's" href="https://www.campbellsoup.ca/" target="_blank" rel="noopener"><img src="brands/campbells.png?v=2" alt="Campbell's"></a>
+      <a class="tool brand" title="Pace" href="https://www.campbellsoup.ca/our-brands/snacks/pace-salsa-sauces/" target="_blank" rel="noopener"><img src="brands/pace.png?v=2" alt="Pace"></a>
+      <a class="tool brand" title="Seedwise" href="https://ozerybakery.com/us-en/" target="_blank" rel="noopener"><img src="brands/seedwise.png?v=2" alt="Seedwise"></a>
+      <a class="tool brand" title="Snyder's of Hanover" href="https://www.campbellsoup.ca/our-brands/snacks/snyders-of-hanover/" target="_blank" rel="noopener"><img src="brands/snyders.png?v=3" alt="Snyder's of Hanover"></a>
+      <a class="tool brand" title="Ocean Spray" href="https://www.oceanspray.com/" target="_blank" rel="noopener"><img src="brands/ocean-spray.png?v=4" alt="Ocean Spray"></a>
     </div>
   </section>
 
   <!-- WORK -->
   <section class="sec wrap" id="work">
     <div class="sec-head">
-      <h2>Selected work</h2>
+      <h2>Case studies</h2>
     </div>
     <div class="work">
 
@@ -780,7 +872,7 @@
           <span class="tags">Product marketing · Launch · Positioning</span>
         </span>
         <span class="result">Owned product marketing to graduate our AI agents from beta to paid,
-          and <strong>grew revenue 6x in launch week</strong>.</span>
+          and <strong>revenue grew 544% week over week in launch week</strong>.</span>
         <span class="go"><span class="sr-only">View case study</span><span class="arr" aria-hidden="true">→</span></span>
       </button>
 
@@ -792,6 +884,37 @@
         <span class="result">Reworked the site to convert: drove an <strong>8x lift in demo bookings</strong>
           and helped grow <strong>SEO-sourced conversions 5.8x year over year</strong>.</span>
         <span class="go"><span class="sr-only">View case study</span><span class="arr" aria-hidden="true">→</span></span>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="sec wrap" id="content">
+    <div class="sec-head">
+      <h2>Content</h2>
+    </div>
+
+    <div class="work">
+
+      <button class="row live reveal" onclick="go('ct-video')">
+        <span class="num">01</span>
+        <span class="title">Video tutorials
+          <span class="tags">Video · Scripting · Product education</span>
+        </span>
+        <span class="result">Scripted and produced Scribenote's how-to videos with our in-house
+          veterinarians, so new users can learn each feature in a few minutes.</span>
+        <span class="go"><span class="sr-only">View videos</span><span class="arr" aria-hidden="true">→</span></span>
+      </button>
+
+      <button class="row live reveal" onclick="go('ct-meo')">
+        <span class="num">02</span>
+        <span class="title">UGC paid ad production
+          <span class="tags">Paid ads · UGC video · Mama Earth Organics</span>
+        </span>
+        <span class="result">Wrote the brief, then scripted, filmed, and edited UGC video ads for an organic grocery
+          delivery service, adding 25,000 in reach and 35,000 video views in one week.</span>
+        <span class="go"><span class="sr-only">View videos</span><span class="arr" aria-hidden="true">→</span></span>
       </button>
 
     </div>
@@ -910,7 +1033,7 @@
         <p>My work spans positioning, messaging, launch GTM, content, research, growth, lifecycle,
           and SEO/AEO.</p>
         <p>I started as
-          a content producer at a digital agency, which is where my eye for aesthetics and
+          a content producer at a social media marketing agency, which is where my eye for aesthetics and
           design comes from.</p>
         <p>Today I also build the machine behind the marketing: the automations and AI workflows
           that power the campaigns.</p>
@@ -935,7 +1058,7 @@
 <!-- ============================ CASE STUDY ============================ -->
 <main id="cs" class="view">
   <section class="cs-top wrap">
-    <button class="backlink" onclick="go('home','work')">← All work</button>
+    <button class="backlink" onclick="go('home','work')">← All case studies</button>
     <div class="cs-eyebrow reveal">Lifecycle / Reactivation · Q2 2026 · Scribenote</div>
     <h1 class="cs-title reveal">Turning dormant users into Scribenote's first marketing-driven revenue</h1>
 
@@ -962,26 +1085,6 @@
         never had a reason to come back.</p>
       <p>I wanted to prove something specific: that marketing could turn that dormant base into
         revenue, <strong>directly and measurably.</strong></p>
-    </div>
-
-    <div class="block reveal">
-      <div class="kick">Role</div>
-      <p>I led this campaign end to end. I designed the strategy and the trial offer, built the behavioral
-        segmentation and lifecycle flows, and wrote and designed every email. I ran the mid-trial research,
-        partnered with our data and front-end engineers to instrument the funnel and build the in-app
-        upgrade path, and turned the whole motion into a repeatable system the team can rerun each quarter.</p>
-    </div>
-
-    <div class="block reveal">
-      <div class="kick">Approach</div>
-      <h3>One offer, two audiences, a dozen behavioral segments</h3>
-      <p>I split the dormant base into two groups: users who signed up and never returned, and
-        free-plan users who were active but had never upgraded. They both got the same offer:
-        an <strong>extended four-week Pro trial</strong>, double our usual length.</p>
-      <p>Once we had our final list of trial reactivation opt-ins, I worked with our data engineer to
-        track their every move in a <strong>Metabase dashboard</strong>, then built roughly a dozen
-        behavioral sub-segments around what each person had or hadn't done in the product. From there,
-        nobody got a generic email. Everyone got the next step for exactly where they were.</p>
     </div>
   </div>
 
@@ -1013,41 +1116,47 @@
   </div>
 
   <div class="cs-body">
+
     <div class="block reveal">
-      <h3>Running a mid-trial survey</h3>
+      <div class="kick">Role</div>
+      <p>I led this campaign end to end. I designed the strategy and the trial offer, built the behavioral
+        segmentation and lifecycle flows, and wrote and designed every email. I ran the mid-trial research,
+        partnered with our data and front-end engineers to instrument the funnel and build the in-app
+        upgrade path, and turned the whole motion into a repeatable system the team can rerun each quarter.</p>
+    </div>
+
+
+    <div class="block reveal">
+      <div class="kick">Approach</div>
+      <h3>One offer, two audiences, a dozen behavioral segments</h3>
+      <p>I split the dormant base into two groups: users who signed up and never returned, and
+        free-plan users who were active but had never upgraded. They both got the same offer:
+        an <strong>extended four-week Pro trial</strong>, double our usual length.</p>
+      <p>Once we had our final list of trial reactivation opt-ins, I worked with our data engineer to
+        track their every move in a <strong>Metabase dashboard</strong>, then built roughly a dozen
+        behavioral sub-segments around what each person had or hadn't done in the product. From there,
+        nobody got a generic email. Everyone got the next step for exactly where they were.</p>
+      <h4>Running a mid-trial survey</h4>
       <p>Halfway through the trial, I surveyed users to learn what they liked, what they didn't,
         and what was holding them back from upgrading. Their answers reshaped the back half
         of the campaign's content, and gave the whole team a sharper read on how trial users
         really think about the product.</p>
-    </div>
-
-    <div class="block reveal">
-      <h3>Building the path to the upgrade email</h3>
+      <h4>Building the path to the upgrade email</h4>
       <p>When it came time to ask for the sale, the one-click path didn't exist: upgrading from an
         email meant hunting through the app. So I partnered with our front-end engineer to build a
         <strong>deep link straight to Scribenote's Stripe upgrade page.</strong> The final email
         could finally do its job, taking intent to paid in a single tap.</p>
-    </div>
-  </div>
-
-  <div class="cs-body">
-    <div class="block reveal">
-      <h3>A campaign that runs once isn't a growth lever</h3>
+      <h4>A campaign that runs once isn't a growth lever</h4>
       <p>So I turned the entire content-creation process into a <strong>repeatable Claude skill</strong>,
         so the campaign can run every quarter without being rebuilt from scratch. Scribenote now has
         an automated reactivation motion it can trigger on a schedule, a durable growth lever, not a
         one-off.</p>
-    </div>
-  </div>
-
-  <!-- INSIGHT + RESULT -->
-  <div class="cs-body">
-    <div class="block reveal">
       <p>The offer didn't convert anyone on its own; the right next message, matched to where each user
         already was, did. Instrumenting the funnel and building a dozen behavioral segments turned one
         generic offer into a dozen relevant ones. It's the lever I'd reach for again, because behavior data
         is what makes a campaign feel personal at scale.</p>
     </div>
+
     <div class="block reveal">
       <div class="kick">Results</div>
       <h3>Marketing put $32K ARR on the board, and a system behind it</h3>
@@ -1060,7 +1169,7 @@
 
   <section class="wrap">
     <div class="cs-next">
-      <button class="backlink" onclick="go('home','work')">← Back to all work</button>
+      <button class="backlink" onclick="go('home','work')">← Back to all case studies</button>
     </div>
   </section>
 
@@ -1080,7 +1189,7 @@
 <!-- ============================ CASE STUDY: TEMPLATE LIBRARY ============================ -->
 <main id="cs-tpl" class="view">
   <section class="cs-top wrap">
-    <button class="backlink" onclick="go('home','work')">← All work</button>
+    <button class="backlink" onclick="go('home','work')">← All case studies</button>
     <div class="cs-eyebrow reveal">Product marketing / Content · Scribenote</div>
     <h1 class="cs-title reveal">The template library that sent vets home sooner</h1>
 
@@ -1107,6 +1216,30 @@
         lift, especially given how busy they are. The friction of being presented a blank page kept our
         users from adopting one of our most valuable, time-saving features.</p>
     </div>
+  </div>
+
+  <div class="cs-body wide">
+    <div class="carousel reveal" data-carousel aria-roledescription="carousel" aria-label="Template library screenshots">
+      <div class="car-track">
+        <figure class="car-slide is-active">
+          <img src="tpl-library.webp" alt="Scribenote template library page showing General Practice, General Illness and Reviewing Results template cards" width="1078" height="1309" loading="lazy">
+          <figcaption><b>The template library</b> landing page, one card per template.</figcaption>
+        </figure>
+        <figure class="car-slide" aria-hidden="true">
+          <img src="tpl-builder.webp" alt="Scribenote Create Template screen with a Start From a Preset search listing Template Library presets" width="1400" height="764" loading="lazy">
+          <figcaption><b>The template builder</b>, where library templates became presets.</figcaption>
+        </figure>
+      </div>
+      <button type="button" class="car-btn prev" aria-label="Previous screenshot">←</button>
+      <button type="button" class="car-btn next" aria-label="Next screenshot">→</button>
+      <div class="car-dots" role="tablist">
+        <button type="button" class="on" aria-label="Screenshot 1"></button>
+        <button type="button" aria-label="Screenshot 2"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-body">
 
     <div class="block reveal">
       <div class="kick">Role</div>
@@ -1132,31 +1265,11 @@
     </div>
   </div>
 
-  <div class="cs-body wide">
-    <div class="carousel reveal" data-carousel aria-roledescription="carousel" aria-label="Template library screenshots">
-      <div class="car-track">
-        <figure class="car-slide is-active">
-          <img src="tpl-library.webp" alt="Scribenote template library page showing General Practice, General Illness and Reviewing Results template cards" width="1078" height="1309" loading="lazy">
-          <figcaption><b>The template library</b> landing page, one card per template.</figcaption>
-        </figure>
-        <figure class="car-slide" aria-hidden="true">
-          <img src="tpl-builder.webp" alt="Scribenote Create Template screen with a Start From a Preset search listing Template Library presets" width="1400" height="764" loading="lazy">
-          <figcaption><b>The template builder</b>, where library templates became presets.</figcaption>
-        </figure>
-      </div>
-      <button type="button" class="car-btn prev" aria-label="Previous screenshot">←</button>
-      <button type="button" class="car-btn next" aria-label="Next screenshot">→</button>
-      <div class="car-dots" role="tablist">
-        <button type="button" class="on" aria-label="Screenshot 1"></button>
-        <button type="button" aria-label="Screenshot 2"></button>
-      </div>
-    </div>
-  </div>
   </div>
 
   <section class="wrap">
     <div class="cs-body">
-      <div class="block reveal" style="padding-bottom:6px">
+      <div class="block reveal">
         <div class="kick">Results</div>
         <h3>Vets kept opening and saving them</h3>
         <p>Since launching in December 2025, templates have been opened <strong>4,500+ times</strong>
@@ -1177,7 +1290,7 @@
 
   <section class="wrap">
     <div class="cs-next">
-      <button class="backlink" onclick="go('home','work')">← Back to all work</button>
+      <button class="backlink" onclick="go('home','work')">← Back to all case studies</button>
     </div>
   </section>
 
@@ -1197,12 +1310,12 @@
 <!-- ============================ CASE STUDY: COMPANION 2.0 ============================ -->
 <main id="cs-companion" class="view">
   <section class="cs-top wrap">
-    <button class="backlink" onclick="go('home','work')">← All work</button>
+    <button class="backlink" onclick="go('home','work')">← All case studies</button>
     <div class="cs-eyebrow reveal">Product marketing / Launch · Scribenote</div>
     <h1 class="cs-title reveal">Relaunching Companion as one agent vets could trust</h1>
 
     <div class="glance reveal cols-3">
-      <div class="cell"><div class="big">6×</div><div class="lab">revenue growth in Companion's launch week</div></div>
+      <div class="cell"><div class="big">544%</div><div class="lab">week-over-week revenue growth in Companion's launch week</div></div>
       <div class="cell"><div class="big">200+</div><div class="lab">vets on the waitlist before launch</div></div>
       <div class="cell"><div class="big">41–52%</div><div class="lab">open rates across the six case-study emails, no dropoff</div></div>
     </div>
@@ -1222,25 +1335,6 @@
         using the newly-improved Companion the way they always had, because they didn't know what it could
         now do. And it was a big ask for skeptical doctors to hand even a sliver of their clinical judgment
         to an AI, now one they had to pay for. It had to feel worth paying for, not just worth trying.</p>
-    </div>
-
-    <div class="block reveal">
-      <div class="kick">Role</div>
-      <p>I was the product marketing lead for the launch. I owned the positioning and messaging, the
-        customer-education campaign, the launch and lifecycle emails, and the sales enablement that
-        equipped the team selling it. I also built <a href="https://askcompanion.com" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">askcompanion.com</a> myself in
-        Claude Code, writing and shipping the copy across the site using GitHub.</p>
-    </div>
-
-    <div class="block reveal">
-      <div class="kick">Approach</div>
-      <h3>Show vets what to ask</h3>
-      <p>The fastest way to fix a value problem is to make the value impossible to miss. So I built an
-        education campaign around the exact questions vets were already asking themselves. Working
-        together with our in-house veterinary team to turn real clinical scenarios into a series of
-        case-study emails: here's a situation you know, here's how you'd ask Companion, and here's what
-        it gives you back. I sent out six clinical use-case emails in all, each pairing a real scenario with
-        a walkthrough filmed by a member of our in-house clinical team.</p>
     </div>
   </div>
 
@@ -1282,7 +1376,24 @@
   </div>
 
   <div class="cs-body">
+
     <div class="block reveal">
+      <div class="kick">Role</div>
+      <p>I owned product marketing for the launch: the positioning and messaging, the
+        customer-education campaign, the launch and lifecycle emails, and the sales enablement that
+        equipped the team selling it. I also built <a href="https://askcompanion.com" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">askcompanion.com</a> myself in
+        Claude Code, writing and shipping the copy across the site using GitHub.</p>
+    </div>
+
+    <div class="block reveal">
+      <div class="kick">Approach</div>
+      <h3>Show vets what to ask</h3>
+      <p>The fastest way to fix a value problem is to make the value impossible to miss. So I built an
+        education campaign around the exact questions vets were already asking themselves. Working
+        together with our in-house veterinary team to turn real clinical scenarios into a series of
+        case-study emails: here's a situation you know, here's how you'd ask Companion, and here's what
+        it gives you back. I sent out six clinical use-case emails in all, each pairing a real scenario with
+        a walkthrough filmed by a member of our in-house clinical team.</p>
       <p>Around that campaign, I owned product marketing for the launch end to end. I built pre-launch
         anticipation with a waitlist that drew <strong>200+ vets before go-live</strong>, and owned the
         positioning and messaging, the launch emails, the blog timed to go-live, and one-page sales sheets
@@ -1294,7 +1405,8 @@
     </div>
   </div>
 
-  <!-- CREATIVE: askcompanion.com (carousel) -->
+
+<!-- CREATIVE: askcompanion.com (carousel) -->
   <div class="cs-body wide">
     <div class="carousel tall site reveal" data-carousel aria-roledescription="carousel" aria-label="askcompanion.com screenshots">
       <div class="car-track">
@@ -1325,8 +1437,8 @@
 
     <div class="block reveal">
       <div class="kick">Results</div>
-      <h3>6x revenue growth in week one</h3>
-      <p>In its first week live, Companion's revenue grew 6x. The relaunch did what it set out to do:
+      <h3>544% revenue growth in launch week</h3>
+      <p>In its launch week, Companion's revenue grew 544% week over week as it moved from beta to paid. The relaunch did what it set out to do:
         it turned a beta vets weren't sure what to do with into a paid product they reached for, and it
         showed up on the revenue line almost immediately.</p>
       <p>The education campaign carried it. The six case-study emails held a 41 to 52% open rate across
@@ -1338,7 +1450,7 @@
 
   <section class="wrap">
     <div class="cs-next">
-      <button class="backlink" onclick="go('home','work')">← Back to all work</button>
+      <button class="backlink" onclick="go('home','work')">← Back to all case studies</button>
     </div>
   </section>
 
@@ -1358,7 +1470,7 @@
 <!-- ============================ CASE STUDY: MARKETING WEBSITE ============================ -->
 <main id="cs-web" class="view">
   <section class="cs-top wrap">
-    <button class="backlink" onclick="go('home','work')">← All work</button>
+    <button class="backlink" onclick="go('home','work')">← All case studies</button>
     <div class="cs-eyebrow reveal">Conversion / Content · Scribenote</div>
     <h1 class="cs-title reveal">Turning the marketing site into a conversion engine</h1>
 
@@ -1415,7 +1527,193 @@
 
   <section class="wrap">
     <div class="cs-next">
-      <button class="backlink" onclick="go('home','work')">← Back to all work</button>
+      <button class="backlink" onclick="go('home','work')">← Back to all case studies</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <h4>Want the walkthrough?</h4>
+        <div class="cta-row">
+          <a class="mail" href="mailto:charlottegoguen@gmail.com" title="charlottegoguen@gmail.com">Get in touch</a>
+          <a class="li" href="https://www.linkedin.com/in/charlotte-goguen/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- ============================ CONTENT: VIDEO TUTORIALS ============================ -->
+<main id="ct-video" class="view">
+  <section class="cs-top wrap">
+    <button class="backlink" onclick="go('home','content')">← All content</button>
+    <div class="cs-eyebrow reveal">Video / Product education · Scribenote</div>
+    <h1 class="cs-title reveal">How-to videos that teach a feature in a few minutes</h1>
+    <p class="content-note reveal">I scripted and produced Scribenote's how-to videos with our in-house veterinarians. Each one walks a new user through a single feature or interface.</p>
+  </section>
+
+  <section class="wrap ct-wrap reveal">
+    <div class="vidgrid">
+      <a class="vid" href="https://www.youtube.com/watch?v=rN5nhJ7GhqM" target="_blank" rel="noopener">
+        <span class="vid-thumb"><img src="https://i.ytimg.com/vi/rN5nhJ7GhqM/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"><span class="vid-play" aria-hidden="true"></span><span class="vid-time">3:25</span></span>
+        <span class="vid-title">How to Transfer Notes into ezyVet with PIMSPal</span>
+      </a>
+      <a class="vid" href="https://www.youtube.com/watch?v=ykOi98O8cu4" target="_blank" rel="noopener">
+        <span class="vid-thumb"><img src="https://i.ytimg.com/vi/ykOi98O8cu4/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"><span class="vid-play" aria-hidden="true"></span><span class="vid-time">1:56</span></span>
+        <span class="vid-title">How to Use Widget Mode to Transfer Notes Into Any PIMS</span>
+      </a>
+      <a class="vid" href="https://www.youtube.com/watch?v=U86iJ6fXpMY" target="_blank" rel="noopener">
+        <span class="vid-thumb"><img src="https://i.ytimg.com/vi/U86iJ6fXpMY/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"><span class="vid-play" aria-hidden="true"></span><span class="vid-time">5:26</span></span>
+        <span class="vid-title">How to Navigate the Scribenote Dashboard (Web)</span>
+      </a>
+      <a class="vid" href="https://www.youtube.com/watch?v=SINyCfggpMM" target="_blank" rel="noopener">
+        <span class="vid-thumb"><img src="https://i.ytimg.com/vi/SINyCfggpMM/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"><span class="vid-play" aria-hidden="true"></span><span class="vid-time">0:42</span></span>
+        <span class="vid-title">How to Use Scribephone on Mobile</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap ct-wrap">
+    <div class="ct-head reveal">
+      <div class="kick">Process</div>
+      <h3>How each video gets made</h3>
+    </div>
+    <ol class="steps reveal">
+      <li class="step">
+        <span class="step-num">01</span>
+        <h4>Try the feature</h4>
+        <p>Before a feature is released, I use it myself in our QA environment. Then I talk to the product and engineering teams to learn why they built it and how vets might use it.</p>
+      </li>
+      <li class="step">
+        <span class="step-num">02</span>
+        <h4>Write the script</h4>
+        <p>I give that context to Claude and we work out a short script together.</p>
+      </li>
+      <li class="step">
+        <span class="step-num">03</span>
+        <h4>Film with a vet</h4>
+        <p>I book time with one of our in-house veterinarians in the small room we have set up like a vet clinic, and we record in Screen Studio.</p>
+      </li>
+      <li class="step">
+        <span class="step-num">04</span>
+        <h4>Edit</h4>
+        <p>I cut the video in Screen Studio, then usually bring it into Premiere Pro to adjust the audio and add end screens or blur on-screen text.</p>
+      </li>
+      <li class="step step-wide">
+        <span class="step-num">05</span>
+        <h4>Publish</h4>
+        <p>I design the thumbnail in Canva. For longer videos, I add chapters in the YouTube description.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap">
+    <div class="cs-next">
+      <button class="backlink" onclick="go('home','content')">← Back to all content</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <h4>Want the walkthrough?</h4>
+        <div class="cta-row">
+          <a class="mail" href="mailto:charlottegoguen@gmail.com" title="charlottegoguen@gmail.com">Get in touch</a>
+          <a class="li" href="https://www.linkedin.com/in/charlotte-goguen/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- ============================ CONTENT: MAMA EARTH ORGANICS ============================ -->
+<main id="ct-meo" class="view">
+  <section class="cs-top wrap">
+    <button class="backlink" onclick="go('home','content')">← All content</button>
+    <div class="cs-eyebrow reveal">Paid social / UGC video · Grow Digital · Mama Earth Organics</div>
+    <h1 class="cs-title reveal">UGC video ads for Mama Earth Organics</h1>
+    <p class="content-note reveal">Mama Earth Organics, an organic grocery delivery service, hired Grow Digital to make UGC content for their paid ads. I wrote the creative brief and made the videos myself, from script to final edit.</p>
+
+    <div class="glance reveal cols-2">
+      <div class="cell"><div class="big">+25K</div><div class="lab">reach in a one-week reporting period</div></div>
+      <div class="cell"><div class="big">+35K</div><div class="lab">video views in the same week</div></div>
+    </div>
+  </section>
+
+  <section class="wrap ct-wrap">
+    <ol class="steps reveal">
+      <li class="step">
+        <div class="kick">The brief</div>
+        <h4>Ads that look like a real person made them</h4>
+        <p>Mama Earth wanted paid ads that drive conversions, mainly on Facebook. We chose UGC-style video because it's made for social first. It isn't polished or corporate, and people like content that looks like a real person made it.</p>
+      </li>
+      <li class="step">
+        <div class="kick">My role</div>
+        <h4>Brief to final cut</h4>
+        <p>I did everything myself: the creative brief, the scripts, appearing on camera, filming, editing, and captions. I also wrote the creative brief for the brand's influencer campaign. I went through several rounds of revisions with the client until we had videos they were happy with.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap ct-wrap">
+    <div class="ct-head reveal">
+      <div class="kick">Green screen ad</div>
+      <h3>One video, three hooks</h3>
+      <p class="content-note">I filmed three different openings for the same video. The client could swap the hook to keep the ad from going stale over a long run, and test which one worked best.</p>
+    </div>
+    <div class="clipgrid reveal">
+      <figure class="clip">
+        <video controls playsinline preload="metadata" src="video/meo-hook-1.mp4#t=0.5"></video>
+        <figcaption>Hook 1: the delivery van</figcaption>
+      </figure>
+      <figure class="clip">
+        <video controls playsinline preload="metadata" src="video/meo-hook-2.mp4#t=0.5"></video>
+        <figcaption>Hook 2: “Have you been grocery shopping wrong?”</figcaption>
+      </figure>
+      <figure class="clip">
+        <video controls playsinline preload="metadata" src="video/meo-hook-3.mp4#t=0.5"></video>
+        <figcaption>Hook 3: “Unpopular opinion”</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap ct-wrap">
+    <div class="ct-head reveal">
+      <div class="kick">Recipes and unboxing</div>
+      <h3>More from the series</h3>
+    </div>
+    <div class="clipgrid reveal">
+      <figure class="clip">
+        <video controls playsinline preload="metadata" src="video/meo-unboxing.mp4#t=0.5"></video>
+        <figcaption>Unboxing</figcaption>
+      </figure>
+      <figure class="clip">
+        <video controls playsinline preload="metadata" src="video/meo-kale-salad.mp4#t=0.5"></video>
+        <figcaption>Kale salad recipe</figcaption>
+      </figure>
+      <figure class="clip">
+        <video controls playsinline preload="metadata" src="video/meo-pork-belly.mp4#t=0.5"></video>
+        <figcaption>Pork belly recipe</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap ct-wrap">
+    <div class="ct-head reveal">
+      <div class="kick">Process</div>
+      <h3>How they were made</h3>
+    </div>
+    <ol class="steps reveal">
+      <li class="step step-wide">
+        <p>I filmed the green screen videos and the kale salad recipe at home, and the unboxing and pork belly recipe on location. Everything was shot on an iPhone and edited in CapCut, and the videos took a couple of days to make.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap">
+    <div class="cs-next">
+      <button class="backlink" onclick="go('home','content')">← Back to all content</button>
     </div>
   </section>
 
@@ -1434,6 +1732,8 @@
 
 <script>
   function go(view, anchor){
+    // stop any video that's playing before leaving the page
+    document.querySelectorAll('video').forEach(v=>v.pause());
     document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
     document.getElementById(view).classList.add('active');
     document.querySelectorAll('nav.top button').forEach(b=>b.classList.remove('on'));
@@ -1472,20 +1772,29 @@
   // highlight Work on initial load
   document.querySelector('nav.top button[data-nav="home"]').classList.add('on');
 
-  // build the infinite "Tools I use" marquee
-  (function(){
-    const grid = document.querySelector('.toolgrid');
-    if(!grid) return;
+  // build the infinite marquees ("Brands I've worked with", "Tools I use")
+  document.querySelectorAll('.toolgrid').forEach(function(grid){
     const track = document.createElement('div');
     track.className = 'marquee-track';
     while(grid.firstChild){ track.appendChild(grid.firstChild); }
     grid.appendChild(track);
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!reduce){
-      // duplicate the row so the loop is seamless at -50%
+      // repeat short rows until they fill the strip, then double so the loop is seamless at -50%
+      const base = track.innerHTML;
+      let n = 0;
+      while(track.scrollWidth < grid.clientWidth && n < 6){ track.innerHTML += base; n++; }
       track.innerHTML += track.innerHTML;
     }
-  })();
+  });
+  // every strip scrolls at the same speed (px per second), however many items it has
+  function paceMarquees(){
+    document.querySelectorAll('.marquee-track').forEach(function(t){
+      t.style.animationDuration = (t.scrollWidth / 2 / 32) + 's';
+    });
+  }
+  paceMarquees();
+  window.addEventListener('load', paceMarquees);
 </script>
 <script>
   // template screenshot carousel
