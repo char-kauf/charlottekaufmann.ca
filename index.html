@@ -771,10 +771,14 @@
   /* about text on a glass card, like the rest of the site */
   #about .about-grid > div{padding:26px 30px 28px;border-radius:var(--radius);background:var(--glass);border:1px solid var(--glass-edge);
     box-shadow:var(--glass-shadow);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
-  #about .about-grid p{color:#36354D;font-size:clamp(18px,2.1vw,21px);line-height:1.55}
+  #about .about-grid p{font-family:var(--sans);letter-spacing:0;color:var(--ink-soft);font-size:clamp(18px,2.1vw,21px);line-height:1.55}
   @media(min-width:861px){
-    #about{grid-template-areas:"art head" "art text" "art .";grid-template-rows:auto auto 1fr}
-    #about .sec-head{margin-bottom:14px;align-self:start}
+    /* heading on top, then photo and text card side by side at the same height */
+    #about{grid-template-areas:"head head" "art text";grid-template-rows:auto auto;align-items:stretch}
+    #about .sec-head{margin-bottom:20px;align-self:start}
+    #about .about-art{aspect-ratio:auto;min-height:400px;height:100%}
+    #about .about-grid{height:100%;display:block}
+    #about .about-grid > div{height:100%;display:flex;flex-direction:column;justify-content:center}
   }
   #about .about-grid p:last-child{margin-bottom:0}
   @media(max-width:680px){#about .about-grid > div{padding:20px 20px 22px;background:rgba(255,255,255,.82)}}
