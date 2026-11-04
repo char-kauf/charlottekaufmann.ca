@@ -671,8 +671,8 @@
   @media(max-width:860px){
     #about{grid-template-columns:1fr;grid-template-areas:"head" "art" "text";grid-template-rows:auto auto auto;column-gap:0}
     #about .about-art{max-width:320px;width:100%;margin:0 auto 24px}
-    #about{text-align:center}
-    #about .sec-head{justify-content:center}
+    #about{text-align:left}
+    #about .sec-head{justify-content:flex-start}
   }
   .about-grid > div{column-count:1}
   .about-grid p{
@@ -752,12 +752,6 @@
   .clip video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;background:#1B1A2E}
   .clip figcaption{padding:12px 6px 0;font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--ink)}
   @media(max-width:680px){.clipgrid{grid-template-columns:1fr;max-width:340px;margin:0 auto}.clip{background:rgba(255,255,255,.82)}}
-  .tool.brand{width:168px;padding:0 20px;text-decoration:none}
-  a.tool.brand:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
-  .brandgrid .marquee-track{animation-duration:95s}
-  .tool.brand img{max-height:36px;max-width:128px;width:auto;height:auto}
-  .tool.brand img[src$=".svg"]{width:128px}
-  #brands{padding-top:6px}
   /* hero photo nudged slightly right on wide screens */
   @media(min-width:861px){.hero-photo{left:18px}}
   /* less empty space between About and the footer CTA */
@@ -785,6 +779,43 @@
   .glance.cols-2{grid-template-columns:repeat(2,1fr);max-width:520px}
   .step .kick{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pine)}
   .cs-body .block h4{font-family:var(--serif);font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--ink);margin:26px 0 8px}
+
+  /* case studies and content side by side */
+  .duo{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;row-gap:0}
+  /* each section shares the parent's rows, so card 01 lines up with card 01, etc. */
+  .duo > .sec{display:grid;grid-template-rows:subgrid;grid-row:span 5;row-gap:14px}
+  .duo .work{display:contents}
+  .duo .sec-head{align-self:end}
+  .duo .row{align-self:stretch;align-content:start}
+  .duo .row{grid-template-columns:34px 1fr;gap:12px;row-gap:8px;position:relative;padding:22px 52px 22px 22px}
+  .duo .row .result{grid-column:2;font-size:15.5px}
+  .duo .row .go{position:absolute;right:20px;top:24px}
+  /* on phones: Case studies stacked above Content, each a normal list */
+  @media(max-width:860px){.duo{display:block}.duo > .sec{display:block}.duo .work{display:flex;flex-direction:column;gap:14px}.duo .sec-head{margin-bottom:14px}}
+  /* ---- Content: sales enablement one-pagers ---- */
+  .docgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}
+  .doc{display:flex;flex-direction:column;gap:4px;padding:12px 12px 16px;border-radius:var(--radius);text-align:left;
+    background:var(--glass);border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    font:inherit;color:var(--ink);cursor:pointer;transition:transform .28s cubic-bezier(.22,.61,.36,1),background .28s}
+  .doc:hover{transform:translateY(-3px);background:var(--glass-strong)}
+  .doc:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+  .doc-thumb{display:block;border-radius:10px;overflow:hidden;aspect-ratio:8.5/11;margin-bottom:10px;
+    background:#fff;box-shadow:0 4px 16px rgba(27,26,46,.12)}
+  .doc-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .doc-kick{padding:0 4px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pine)}
+  .doc-title{padding:0 4px;font-family:var(--serif);font-weight:600;font-size:17px;line-height:1.3;letter-spacing:-.01em}
+  .docview{width:min(860px,calc(100% - 24px));max-height:calc(100% - 24px);padding:0;border:0;border-radius:20px;
+    background:#F4F2FA;box-shadow:0 30px 80px rgba(27,26,46,.35)}
+  .docview::backdrop{background:rgba(27,26,46,.55)}
+  .docview-bar{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:14px 18px;background:rgba(244,242,250,.94);font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink)}
+  .docview-bar button{font:inherit;font-size:15px;font-weight:600;padding:8px 14px;border-radius:999px;border:0;
+    background:#fff;color:var(--ink);cursor:pointer}
+  .docview-pages{display:flex;flex-direction:column;gap:16px;padding:0 18px 18px}
+  .docview-pages img{width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 4px 16px rgba(27,26,46,.12)}
+  @media(max-width:680px){.docgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.doc{background:rgba(255,255,255,.82)}
+    .doc-title{font-size:15.5px}.docview-pages{padding:0 10px 10px}}
 </style>
 </head>
 <body>
@@ -810,40 +841,17 @@
     <div class="hero-grid">
       <div class="hero-text">
         <h1 class="reveal">Marketing that drives action.</h1>
-        <p class="lead reveal">I'm Charlotte. Read on to learn more about my five years of marketing across B2B/B2C SaaS and agency work.</p>
+        <p class="lead reveal">I'm Charlotte, a marketer with five years across SaaS and agency work.</p>
       </div>
       <div class="hero-photo reveal">
         <img src="headshot.jpg" alt="Charlotte Kaufmann">
-        <div class="float-chip fc-1"><b>544%</b><span>launch-week<br>revenue growth</span></div>
-        <div class="float-chip fc-2"><b>$32K</b><span>ARR<br>recovered</span></div>
       </div>
     </div>
   </section>
 
-  <!-- BRANDS -->
-  <section class="sec wrap" id="brands">
-    <div class="sec-head" style="justify-content:center">
-      <h2>Brands I've worked with</h2>
-    </div>
-    <div class="toolgrid brandgrid reveal">
-      <a class="tool brand" title="Shindig Music Festival" href="https://shindigfest.ca/" target="_blank" rel="noopener"><img src="brands/shindig.png?v=2" alt="Shindig Music Festival"></a>
-      <a class="tool brand" title="The Ten Spot" href="https://www.thetenspot.com/" target="_blank" rel="noopener"><img src="brands/the-ten-spot.png?v=2" alt="The Ten Spot"></a>
-      <a class="tool brand" title="Goldfish" href="https://www.campbellsoup.ca/our-brands/snacks/goldfish/" target="_blank" rel="noopener"><img src="brands/goldfish.png?v=2" alt="Goldfish"></a>
-      <a class="tool brand" title="Smooth Ambler" href="https://www.smoothambler.com/" target="_blank" rel="noopener"><img src="brands/smooth-ambler.png?v=2" alt="Smooth Ambler"></a>
-      <a class="tool brand" title="Scribenote" href="https://www.scribenote.com/" target="_blank" rel="noopener"><img src="brands/scribenote.png?v=2" alt="Scribenote"></a>
-      <a class="tool brand" title="Henkell" href="https://www.henkell.com/" target="_blank" rel="noopener"><img src="brands/henkell.png?v=2" alt="Henkell"></a>
-      <a class="tool brand" title="Snack Factory Pretzel Crisps" href="https://www.campbellsoup.ca/our-brands/snacks/snack-factory/" target="_blank" rel="noopener"><img src="brands/pretzel-crisps.png?v=3" alt="Snack Factory Pretzel Crisps"></a>
-      <a class="tool brand" title="Ralph Lauren" href="https://www.ralphlauren.com/" target="_blank" rel="noopener"><img src="brands/ralph-lauren.svg" alt="Ralph Lauren"></a>
-      <a class="tool brand" title="Campbell's" href="https://www.campbellsoup.ca/" target="_blank" rel="noopener"><img src="brands/campbells.png?v=2" alt="Campbell's"></a>
-      <a class="tool brand" title="Pace" href="https://www.campbellsoup.ca/our-brands/snacks/pace-salsa-sauces/" target="_blank" rel="noopener"><img src="brands/pace.png?v=2" alt="Pace"></a>
-      <a class="tool brand" title="Seedwise" href="https://ozerybakery.com/us-en/" target="_blank" rel="noopener"><img src="brands/seedwise.png?v=2" alt="Seedwise"></a>
-      <a class="tool brand" title="Snyder's of Hanover" href="https://www.campbellsoup.ca/our-brands/snacks/snyders-of-hanover/" target="_blank" rel="noopener"><img src="brands/snyders.png?v=3" alt="Snyder's of Hanover"></a>
-      <a class="tool brand" title="Ocean Spray" href="https://www.oceanspray.com/" target="_blank" rel="noopener"><img src="brands/ocean-spray.png?v=4" alt="Ocean Spray"></a>
-    </div>
-  </section>
-
+  <div class="wrap duo">
   <!-- WORK -->
-  <section class="sec wrap" id="work">
+  <section class="sec" id="work">
     <div class="sec-head">
       <h2>Case studies</h2>
     </div>
@@ -894,15 +902,35 @@
   </section>
 
   <!-- CONTENT -->
-  <section class="sec wrap" id="content">
+  <section class="sec" id="content">
     <div class="sec-head">
       <h2>Content</h2>
     </div>
 
     <div class="work">
 
-      <button class="row live reveal" onclick="go('ct-video')">
+      <button class="row live reveal" onclick="go('ct-enable')">
         <span class="num">01</span>
+        <span class="title">Sales enablement
+          <span class="tags">One-pagers · Sales · Support</span>
+        </span>
+        <span class="result">Wrote about a dozen one-pagers that our sales and support teams share
+          with clinics.</span>
+        <span class="go"><span class="sr-only">View sales enablement</span><span class="arr" aria-hidden="true">→</span></span>
+      </button>
+
+      <button class="row live reveal" onclick="go('ct-webinar')">
+        <span class="num">02</span>
+        <span class="title">Webinar production
+          <span class="tags">Webinar · Promotion · Live production</span>
+        </span>
+        <span class="result">Planned, promoted, and ran Scribenote's webinar on using Scribenote with
+          practice management software, with over 200 registrations.</span>
+        <span class="go"><span class="sr-only">View webinar</span><span class="arr" aria-hidden="true">→</span></span>
+      </button>
+
+      <button class="row live reveal" onclick="go('ct-video')">
+        <span class="num">03</span>
         <span class="title">Video tutorials
           <span class="tags">Video · Scripting · Product education</span>
         </span>
@@ -912,7 +940,7 @@
       </button>
 
       <button class="row live reveal" onclick="go('ct-meo')">
-        <span class="num">02</span>
+        <span class="num">04</span>
         <span class="title">UGC paid ad production
           <span class="tags">Paid ads · UGC video · Mama Earth Organics</span>
         </span>
@@ -923,6 +951,8 @@
 
     </div>
   </section>
+
+  </div>
 
   <!-- TOOLS -->
   <section class="sec wrap" id="tools">
@@ -1734,7 +1764,143 @@
   </footer>
 </main>
 
+<!-- ============================ CONTENT: WEBINAR ============================ -->
+<main id="ct-webinar" class="view">
+  <section class="cs-top wrap">
+    <button class="backlink" onclick="go('home','content')">← All content</button>
+    <div class="cs-eyebrow reveal">Webinar / Product education · Scribenote</div>
+    <h1 class="cs-title reveal">Making Scribenote Feel Native in Your PIMS</h1>
+    <p class="content-note reveal">I ran Scribenote's webinar on using Scribenote with practice management software (PIMS). I owned it from the idea through promotion, the two live sessions in February 2026, and the recordings on YouTube.</p>
+
+    <div class="glance reveal cols-2">
+      <div class="cell"><div class="big">200+</div><div class="lab">registrations</div></div>
+      <div class="cell"><div class="big">240</div><div class="lab">views of the recordings on YouTube</div></div>
+    </div>
+  </section>
+
+  <section class="wrap ct-wrap reveal">
+    <div class="vidgrid">
+      <a class="vid" href="https://www.youtube.com/watch?v=9UUrNUDqeg8" target="_blank" rel="noopener">
+        <span class="vid-thumb"><img src="https://i.ytimg.com/vi/9UUrNUDqeg8/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"><span class="vid-play" aria-hidden="true"></span><span class="vid-time">35:32</span></span>
+        <span class="vid-title">Webinar recording: February 12, 2026</span>
+      </a>
+      <a class="vid" href="https://www.youtube.com/watch?v=a6yMzH9CMkI" target="_blank" rel="noopener">
+        <span class="vid-thumb"><img src="https://i.ytimg.com/vi/a6yMzH9CMkI/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"><span class="vid-play" aria-hidden="true"></span><span class="vid-time">28:02</span></span>
+        <span class="vid-title">Webinar recording: February 13, 2026</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="cs-next">
+      <button class="backlink" onclick="go('home','content')">← Back to all content</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <h4>Want the walkthrough?</h4>
+        <div class="cta-row">
+          <a class="mail" href="mailto:charlottegoguen@gmail.com" title="charlottegoguen@gmail.com">Get in touch</a>
+          <a class="li" href="https://www.linkedin.com/in/charlotte-goguen/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- ============================ CONTENT: SALES ENABLEMENT ============================ -->
+<main id="ct-enable" class="view">
+  <section class="cs-top wrap">
+    <button class="backlink" onclick="go('home','content')">← All content</button>
+    <div class="cs-eyebrow reveal">Sales enablement · Scribenote</div>
+    <h1 class="cs-title reveal">Materials our sales team uses with clinics</h1>
+    <p class="content-note reveal">I write the one-pagers that sales and support share with clinics.</p>
+  </section>
+
+  <section class="wrap ct-wrap">
+    <ol class="steps reveal">
+      <li class="step step-wide">
+        <div class="kick">One-pagers</div>
+        <h4>About a dozen, each for one job</h4>
+        <p>I've written one-pagers for specific integrations, specific features, individual enterprise accounts, onboarding, and conferences.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap ct-wrap reveal">
+    <div class="docgrid">
+      <button class="doc" type="button" onclick="openDoc('quickstart',2,'Quick start guide')">
+        <span class="doc-thumb"><img src="enable/quickstart-1-sm.webp" alt="" loading="lazy" width="560" height="725"></span>
+        <span class="doc-kick">New users</span>
+        <span class="doc-title">Quick start guide</span>
+      </button>
+      <button class="doc" type="button" onclick="openDoc('free-vs-pro',1,'Free vs. Pro plans')">
+        <span class="doc-thumb"><img src="enable/free-vs-pro-1-sm.webp" alt="" loading="lazy" width="560" height="725"></span>
+        <span class="doc-kick">Pricing change</span>
+        <span class="doc-title">Free vs. Pro plans</span>
+      </button>
+      <button class="doc" type="button" onclick="openDoc('companion',2,'Companion beta')">
+        <span class="doc-thumb"><img src="enable/companion-1-sm.webp" alt="" loading="lazy" width="560" height="725"></span>
+        <span class="doc-kick">Feature launch</span>
+        <span class="doc-title">Companion beta</span>
+      </button>
+      <button class="doc" type="button" onclick="openDoc('pimspal',2,'PIMSPal quick start')">
+        <span class="doc-thumb"><img src="enable/pimspal-1-sm.webp" alt="" loading="lazy" width="560" height="725"></span>
+        <span class="doc-kick">Integration</span>
+        <span class="doc-title">PIMSPal quick start</span>
+      </button>
+      <button class="doc" type="button" onclick="openDoc('support',2,'Support guide')">
+        <span class="doc-thumb"><img src="enable/support-1-sm.webp" alt="" loading="lazy" width="560" height="725"></span>
+        <span class="doc-kick">Enterprise account</span>
+        <span class="doc-title">Support guide</span>
+      </button>
+    </div>
+  </section>
+
+  <dialog id="docview" class="docview" onclick="if(event.target===this)this.close()">
+    <div class="docview-bar">
+      <span id="docview-title"></span>
+      <button type="button" onclick="document.getElementById('docview').close()">Close <span aria-hidden="true">✕</span></button>
+    </div>
+    <div id="docview-pages" class="docview-pages"></div>
+  </dialog>
+
+  <section class="wrap">
+    <div class="cs-next">
+      <button class="backlink" onclick="go('home','content')">← Back to all content</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <h4>Want the walkthrough?</h4>
+        <div class="cta-row">
+          <a class="mail" href="mailto:charlottegoguen@gmail.com" title="charlottegoguen@gmail.com">Get in touch</a>
+          <a class="li" href="https://www.linkedin.com/in/charlotte-goguen/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
+
 <script>
+  // sales enablement: open a one-pager's pages in a viewer
+  function openDoc(key, pages, title){
+    const box=document.getElementById('docview-pages');
+    box.innerHTML='';
+    for(let i=1;i<=pages;i++){
+      const img=new Image();
+      img.src='enable/'+key+'-'+i+'.webp';
+      img.alt=title+', page '+i;
+      box.appendChild(img);
+    }
+    document.getElementById('docview-title').textContent=title;
+    const d=document.getElementById('docview');
+    d.showModal(); d.scrollTop=0;
+  }
   function go(view, anchor){
     // stop any video that's playing before leaving the page
     document.querySelectorAll('video').forEach(v=>v.pause());
@@ -1776,7 +1942,7 @@
   // highlight Work on initial load
   document.querySelector('nav.top button[data-nav="home"]').classList.add('on');
 
-  // build the infinite marquees ("Brands I've worked with", "Tools I use")
+  // build the infinite marquee ("Tools I use")
   document.querySelectorAll('.toolgrid').forEach(function(grid){
     const track = document.createElement('div');
     track.className = 'marquee-track';
